@@ -1,8 +1,4 @@
-module "label" {
-  namespace  = var.namespace
-  name       = var.name
-  stage      = var.stage
-  delimiter  = var.delimiter
-  attributes = var.attributes
-  tags       = var.tags
-}
+#variable "instance_type" {
+#  description = "Type of EC2 instance to provision"
+#  default     = "t3.nano"
+#}
