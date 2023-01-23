@@ -1,4 +1,7 @@
-output "vpc_id" {
-  description = "The ID of the VPC"
-  value       = module.vpc.vpc_id
+output "instance_ami" {
+  value = aws_instance.web.ami
+}
+
+output "instance_arn" {
+  value = aws_instance.web.arn
 }
