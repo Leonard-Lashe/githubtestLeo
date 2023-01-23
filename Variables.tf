@@ -1,5 +1,4 @@
 module "label" {
-  source     = "../terraform-label"
   namespace  = var.namespace
   name       = var.name
   stage      = var.stage
