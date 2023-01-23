@@ -5,12 +5,6 @@ resource "aws_vpc" "vpc" {
   enable_dns_support   = var.enable-dns-support
   enable_dns_hostnames = var.enable-dns-hostnames
 
-  tags = merge(
-  module.label.tags,
-  map(
-  "Location", var.vpc-location
-  )
-  )
 }
   
 
