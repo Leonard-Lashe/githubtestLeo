@@ -8,4 +8,5 @@ module "vpc" {
   public_subnets  = ["10.0.101.0/24", "10.0.102.0/24"]
 
   enable_ipv6 = false
+}
 
