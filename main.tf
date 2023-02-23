@@ -3,7 +3,7 @@ resource "aws_vpc" "leo-vpc" {
 }
 resource "aws_subnet" "main" {
   vpc_id     = aws_vpc.leo-vpc.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.subnet_prefix
 
   tags = {
     Name = "Main"
@@ -36,7 +36,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
 subnet_id = aws_subnet.main.id
   tags = {
     Name = "HelloWorld"
