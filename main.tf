@@ -3,7 +3,7 @@ resource "aws_vpc" "leo-vpc" {
 }
 resource "aws_subnet" "main" {
   vpc_id     = aws_vpc.leo-vpc.id
-  cidr_block = var.subnet_prefix
+  cidr_block = var.subnet_cidr[0]
 
   tags = {
     Name = "Main"
@@ -12,7 +12,7 @@ resource "aws_subnet" "main" {
 
 resource "aws_subnet" "boris" {
   vpc_id     = aws_vpc.leo-vpc.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = var.subnet_cidr[1]
 
   tags = {
     Name = "boris"
