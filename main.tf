@@ -1,8 +1,8 @@
-resource "aws_vpc" "Leo-VPC" {
+resource "aws_vpc" "leo-vpc" {
   cidr_block = "10.0.0.0/16"
 }
 resource "aws_subnet" "main" {
-  vpc_id     = aws_vpc.Leo-VPC.id
+  vpc_id     = aws_vpc.leo-vpc.id
   cidr_block = "10.0.1.0/24"
 
   tags = {
