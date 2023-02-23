@@ -10,6 +10,14 @@ resource "aws_subnet" "main" {
   }
 }
 
+resource "aws_subnet" "boris" {
+  vpc_id     = aws_vpc.leo-vpc.id
+  cidr_block = "10.0.2.0/24"
+
+  tags = {
+    Name = "boris"
+  }
+}
 data "aws_ami" "ubuntu" {
   most_recent = true
 
