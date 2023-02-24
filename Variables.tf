@@ -5,6 +5,6 @@ variable "instance_type" {
 
 variable "subnet_cidr" {
   description = "cidr block of subnet"
-  type = list
-  default     = [ "10.0.1.0/24","10.0.2.0/24" ]
+  type        = list
+  default     = ["10.0.1.0/24","10.0.2.0/24"]
 }
