@@ -18,6 +18,11 @@ resource "aws_subnet" "boris" {
     Name = "boris"
   }
 }
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.leo-vpc.id
+}
+
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
