@@ -22,6 +22,23 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.leo-vpc.id
 }
 
+resource "aws_default_security_group" "default" {
+  vpc_id = aws_vpc.leo-vpc.id
+
+  ingress {
+    protocol  = -1
+    self      = true
+    from_port = 443
+    to_port   = 443
+  }
+
+  egress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
 
 data "aws_ami" "ubuntu" {
   most_recent = true
