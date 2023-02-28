@@ -68,7 +68,7 @@ subnet_id = aws_subnet.main.id
     Name = "HelloWorld"
   }
 }
-resource "aws_instance" "web" {
+resource "aws_instance" "web2" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 subnet_id = aws_subnet.main.id
