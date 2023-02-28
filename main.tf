@@ -2,7 +2,7 @@ resource "aws_vpc" "leo-vpc" {
   cidr_block = "10.0.0.0/16"
 }
 resource "aws_vpc" "leoprivate-vpc" {
-  cidr_block = "10.0.1.0/16"
+  cidr_block = "172.168.0.0/16"
 }
 
 resource "aws_subnet" "main" {
