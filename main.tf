@@ -79,5 +79,5 @@ resource "aws_db_instance" "default" {
   password             = "openme"
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
-  vpc_id = aws_vpc.leoprivate_vpc.id
+ 
 }
