@@ -89,3 +89,12 @@ resource "aws_db_instance" "default" {
   skip_final_snapshot  = true
  
 }
+
+resource "aws_s3_bucket" "Leo12$%-bucket" {
+  bucket = "my-tf-leo12%$-bucket"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
