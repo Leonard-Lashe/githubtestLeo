@@ -90,7 +90,7 @@ resource "aws_db_instance" "default" {
  
 }
 
-resource "aws_s3_bucket" "Leo12$%-bucket" {
+resource "aws_s3_bucket" "Leo12-bucket" {
   bucket = "my-tf-leo12%$-bucket"
 
   tags = {
