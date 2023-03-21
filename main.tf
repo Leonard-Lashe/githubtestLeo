@@ -6,7 +6,7 @@ resource "aws_vpc" "leoprivatevpc" {
 }
 
 resource "aws_subnet" "main" {
-  vpc_id     = aws_vpc.leo-vpc.id
+  vpc_id     = aws_vpc.leovpc.id
   cidr_block = var.subnet_cidr[0]
 
   tags = {
@@ -15,7 +15,7 @@ resource "aws_subnet" "main" {
 }
 
 resource "aws_subnet" "boris" {
-  vpc_id     = aws_vpc.leo-vpc.id
+  vpc_id     = aws_vpc.leovpc.id
   cidr_block = var.subnet_cidr[1]
 
   tags = {
@@ -23,11 +23,11 @@ resource "aws_subnet" "boris" {
   }
 }
 resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.leo-vpc.id
+  vpc_id = aws_vpc.leovpc.id
 }
 
 resource "aws_default_security_group" "default" {
-  vpc_id = aws_vpc.leo-vpc.id
+  vpc_id = aws_vpc.leovpc.id
 
   ingress {
     protocol  = -1
