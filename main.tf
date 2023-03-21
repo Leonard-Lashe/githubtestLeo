@@ -1,7 +1,7 @@
-resource "aws_vpc" "leo-vpc" {
+resource "aws_vpc" "leovpc" {
   cidr_block = "10.0.0.0/16"
 }
-resource "aws_vpc" "leoprivate-vpc" {
+resource "aws_vpc" "leoprivatevpc" {
   cidr_block = "172.168.0.0/16"
 }
 
@@ -77,21 +77,8 @@ subnet_id = aws_subnet.main.id
   }
 }
 
-resource "aws_db_instance" "default" {
-  allocated_storage    = 10
-  db_name              = "mydb"
-  engine               = "mysql"
-  engine_version       = "5.7"
-  instance_class       = "db.t2.micro"
-  username             = "leo"
-  password             = "openme"
-  parameter_group_name = "default.mysql5.7"
-  skip_final_snapshot  = true
- 
-}
-
-resource "aws_s3_bucket" "Leo12-bucket" {
-  bucket = "my-tf-leo12%$-bucket"
+resource "aws_s3_bucket" "Leo12bucket" {
+  bucket = "my-tf-leo12-bucket"
 
   tags = {
     Name        = "My bucket"
