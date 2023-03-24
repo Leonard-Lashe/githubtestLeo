@@ -1,9 +1,6 @@
 resource "aws_vpc" "leovpc" {
   cidr_block = "10.0.0.0/16"
 }
-resource "aws_vpc" "leoprivatevpc" {
-  cidr_block = "172.168.0.0/16"
-}
 
 resource "aws_subnet" "main" {
   vpc_id     = aws_vpc.leovpc.id
