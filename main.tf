@@ -74,7 +74,7 @@ subnet_id = aws_subnet.leo.id
   }
 }
 
-resource "aws_s3_bucket" "leolabbuckt" {
+resource "aws_s3_bucket" "default" {
   bucket = "my-tf-leo12-bucket"
 
   tags = {
