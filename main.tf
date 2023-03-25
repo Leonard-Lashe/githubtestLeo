@@ -1,13 +1,13 @@
-resource "aws_vpc" "leovpc" {
+resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }
 
-resource "aws_subnet" "main" {
-  vpc_id     = aws_vpc.leovpc.id
+resource "aws_subnet" "leo" {
+  vpc_id     = aws_vpc.main.id
   cidr_block = var.subnet_cidr[0]
 
   tags = {
-    Name = "Main"
+    Name = "leo"
   }
 }
 
@@ -20,11 +20,11 @@ resource "aws_subnet" "boris" {
   }
 }
 resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.leovpc.id
+  vpc_id = aws_vpc.main.id
 }
 
 resource "aws_default_security_group" "default" {
-  vpc_id = aws_vpc.leovpc.id
+  vpc_id = aws_vpc.main.id
 
   ingress {
     protocol  = -1
@@ -60,7 +60,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-subnet_id = aws_subnet.main.id
+subnet_id = aws_subnet.leo.id
   tags = {
     Name = "HelloWorld"
   }
@@ -68,13 +68,13 @@ subnet_id = aws_subnet.main.id
 resource "aws_instance" "web2" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-subnet_id = aws_subnet.main.id
+subnet_id = aws_subnet.leo.id
   tags = {
     Name = "HelloWorld"
   }
 }
 
-resource "aws_s3_bucket" "Leo12bucket" {
+resource "aws_s3_bucket" "leolabbuckt" {
   bucket = "my-tf-leo12-bucket"
 
   tags = {
