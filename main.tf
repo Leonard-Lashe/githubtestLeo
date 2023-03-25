@@ -12,7 +12,7 @@ resource "aws_subnet" "leo" {
 }
 
 resource "aws_subnet" "boris" {
-  vpc_id     = aws_vpc.leovpc.id
+  vpc_id     = aws_vpc.main.id
   cidr_block = var.subnet_cidr[1]
 
   tags = {
