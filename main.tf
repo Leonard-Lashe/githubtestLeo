@@ -24,6 +24,7 @@ resource "aws_iam_role" "example" {
       ]
     })
   }
+}
   
  
 resource "aws_subnet" "leo" {
