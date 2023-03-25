@@ -2,7 +2,24 @@ resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
   instance_tenancy = "default"
 }
-
+resource "aws_iam_role" "EC2-vpc-role" {
+  name = "EC2-vpc-role"
+   "Sid": "VisualEditor1",
+    "Effect": "Allow",
+    "Action": "ec2:DescribeVpcs",
+    "Resource": "*"
+},
+{
+    "Sid": "foo",
+    "Effect": "Allow",
+    "Action": [
+        "ec2:CreateVpc",
+        "ec2:DeleteVpc"
+    ],
+    "Resource": "*"
+}
+  
+ 
 resource "aws_subnet" "leo" {
   vpc_id     = aws_vpc.main.id
   cidr_block = var.subnet_cidr[0]
