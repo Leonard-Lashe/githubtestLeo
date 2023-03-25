@@ -1,5 +1,6 @@
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
+  instance_tenancy = "default"
 }
 
 resource "aws_subnet" "leo" {
@@ -74,11 +75,3 @@ subnet_id = aws_subnet.leo.id
   }
 }
 
-resource "aws_s3_bucket" "default" {
-  bucket = "my-tf-leo12-bucket"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
