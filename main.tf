@@ -4,7 +4,7 @@ resource "aws_vpc" "main" {
 }
 resource "aws_iam_role" "EC2-vpc-role" {
   name = "EC2-vpc-role"
-   "Sid": "VisualEditor1",
+  
     "Effect": "Allow",
     "Action": "ec2:DescribeVpcs",
     "Resource": "*"
