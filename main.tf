@@ -2,41 +2,6 @@ resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
   instance_tenancy = "default"
 }
-
-resource "aws_iam_role" "example" {
-  name               = "ec2vpc_role"
-  assume_role_policy = data.aws_iam_policy_document.instance_assume_role_policy.json # (not shown)
-
-  inline_policy {
-    name = "my_inline_policy"
-
-    policy = jsonencode({
-      Version = "2012-10-17"
-      Statement = [
-        {
-          "Action": [
-        "ec2:CreateVpc",
-        "ec2:DeleteVpc"
-    ],
-          Effect   = "Allow"
-          Resource = "*"
-        },
-      ]
-    })
-  }
-}
-  
-  inline_policy {
-    name   = "policy-8675309"
-    policy = data.aws_iam_policy_document.inline_policy.json
-  }
-
-data "aws_iam_policy_document" "inline_policy" {
-  statement {
-    actions   = ["ec2:DescribeAccountAttributes"]
-    resources = ["*"]
-  }
-}
  
 resource "aws_subnet" "leo" {
   vpc_id     = aws_vpc.main.id
