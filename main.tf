@@ -26,6 +26,18 @@ resource "aws_iam_role" "example" {
   }
 }
   
+  inline_policy {
+    name   = "policy-8675309"
+    policy = data.aws_iam_policy_document.inline_policy.json
+  }
+}
+
+data "aws_iam_policy_document" "inline_policy" {
+  statement {
+    actions   = ["ec2:DescribeAccountAttributes"]
+    resources = ["*"]
+  }
+}
  
 resource "aws_subnet" "leo" {
   vpc_id     = aws_vpc.main.id
