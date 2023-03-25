@@ -30,7 +30,6 @@ resource "aws_iam_role" "example" {
     name   = "policy-8675309"
     policy = data.aws_iam_policy_document.inline_policy.json
   }
-}
 
 data "aws_iam_policy_document" "inline_policy" {
   statement {
