@@ -30,8 +30,8 @@ resource "aws_default_security_group" "default" {
   ingress {
     protocol  = -1
     self      = true
-    from_port = 443
-    to_port   = 443
+    from_port = 0
+    to_port   = 0
   }
 
   egress {
