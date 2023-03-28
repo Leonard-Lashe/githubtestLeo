@@ -41,7 +41,21 @@ resource "aws_default_security_group" "default" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
+module "websg-group" {
+  source    = "terraform-aws-modules/security-group/aws"
+  version   = "4.17.1"
+  name      = "websg_new"
+  
+   vpc_id = aws_vpc.main.id
+  
+  ingress_rules       = ["http-80-tcp","https-443-tcp"]
+  ingress_cidr_blocks = ["0.0.0.0/0"]
+  
+  egress_rules       = ["all-all"]
+  egress_cidr_blocks = ["0.0.0.0/0"]
+}
+  
+  
 data "aws_ami" "ubuntu" {
   most_recent = true
 
