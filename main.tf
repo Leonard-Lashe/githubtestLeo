@@ -24,7 +24,6 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.main.id
 }
 
-}
 module "websg-group" {
   source    = "terraform-aws-modules/security-group/aws"
   version   = "4.17.1"
