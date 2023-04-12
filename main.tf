@@ -17,7 +17,7 @@ module "vpc" {
   }
 }
 resource "aws_internet_gateway" "gw" {
-  vpc_id = module.vpc.public_subnet
+  vpc_id = module.vpc
 }
 
 module "websg-group" {
