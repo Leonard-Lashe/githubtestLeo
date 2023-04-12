@@ -1,25 +1,3 @@
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
-  instance_tenancy = "default"
-}
- 
-resource "aws_subnet" "leo" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.subnet_cidr[0]
-
-  tags = {
-    Name = "leo"
-  }
-}
-
-resource "aws_subnet" "boris" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.subnet_cidr[1]
-
-  tags = {
-    Name = "boris"
-  }
-}
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
@@ -39,7 +17,7 @@ module "vpc" {
   }
 }
 resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = module.vpc.public_subnet
 }
 
 module "websg-group" {
