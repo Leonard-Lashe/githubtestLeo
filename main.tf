@@ -15,7 +15,7 @@ module "blog_vpc" {
  
 
   tags = {
-    Terraform = "true"
+    Terraform   = "true"
     Environment = "dev"
   }
 }
@@ -25,7 +25,7 @@ module "blog_sg" {
   version   = "4.17.1"
   name      = "new_sg"
   
-   vpc_id = module.blog_vpc.public_subnets[0]
+  vpc_id = module.blog_vpc.public_subnets[0]
   
   ingress_rules       = ["http-80-tcp","https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
@@ -54,16 +54,16 @@ data "aws_ami" "ubuntu" {
   source  = "terraform-aws-modules/autoscaling/aws"
   version = "6.9.0"
    
-  name = "blog"
+  name     = "blog"
   min_size = 1
   max_size = 2
    
   vpc_zone_identifier = module.blog_vpc.public_subnets
-  target_group_arns = module.blog_alb.target_group_arns
-  security_groups = [module.blog_sg.security_group_id]
+  target_group_arns   = module.blog_alb.target_group_arns
+  security_groups     = [module.blog_sg.security_group_id]
     
-  image_id           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
+  image_id            = data.aws_ami.ubuntu.id
+  instance_type       = var.instance_type
     
  }
    
