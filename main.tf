@@ -20,6 +20,24 @@ resource "aws_subnet" "boris" {
     Name = "boris"
   }
 }
+
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
+
+  name = "dev"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["us-west-2a", "us-west-2b", "us-west-2c"]
+  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+
+  enable_nat_gateway = true
+ 
+
+  tags = {
+    Terraform = "true"
+    Environment = "dev"
+  }
+}
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.main.id
 }
@@ -29,7 +47,7 @@ module "websg-group" {
   version   = "4.17.1"
   name      = "websg_new"
   
-   vpc_id = aws_vpc.main.id
+   vpc_id = module.vpc.public_subnets[0]
   
   ingress_rules       = ["http-80-tcp","https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
@@ -58,7 +76,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-subnet_id = aws_subnet.leo.id
+vpc_id = module.vpc.public_subnet[0]
   tags = {
     Name = "HelloWorld"
   }
@@ -66,7 +84,7 @@ subnet_id = aws_subnet.leo.id
 resource "aws_instance" "web2" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-subnet_id = aws_subnet.leo.id
+vpc_id = module.vpc.public_subnet[0]
   tags = {
     Name = "HelloWorld"
   }
