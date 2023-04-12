@@ -16,9 +16,6 @@ module "vpc" {
     Environment = "dev"
   }
 }
-resource "aws_internet_gateway" "gw" {
-  vpc_id = module.vpc
-}
 
 module "websg-group" {
   source    = "terraform-aws-modules/security-group/aws"
