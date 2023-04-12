@@ -23,7 +23,7 @@ module "blog_vpc" {
 module "blog_sg" {
   source    = "terraform-aws-modules/security-group/aws"
   version   = "4.17.1"
-  name      = "blogsg_new"
+  name      = "new_sg"
   
    vpc_id = module.blog_vpc.public_subnets[0]
   
@@ -33,8 +33,7 @@ module "blog_sg" {
   egress_rules       = ["all-all"]
   egress_cidr_blocks = ["0.0.0.0/0"]
 }
-  
-  
+   
 data "aws_ami" "ubuntu" {
   most_recent = true
 
