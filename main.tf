@@ -54,7 +54,6 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-  subnet_id = module.vpc.public_subnet[0]
   tags = {
     Name = "HelloWorld"
   }
@@ -62,7 +61,6 @@ resource "aws_instance" "web" {
 resource "aws_instance" "web2" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-  subnet_id = module.vpc.public_subnet[0]
   tags = {
     Name = "HelloWorld"
   }
